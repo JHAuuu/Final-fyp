@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <a href="#" class="image featured">
-                            <asp:Image runat="server" ID="imgBook" />
+                            <asp:Image runat="server" ID="imgBook"  Width="250" Height="350"/>
                         </a>
                     </div>
                     <div class="col-md-4">
@@ -148,7 +148,7 @@
                         <ItemTemplate>
                             <div class="col-8">
                                 <a href="BookDetail.aspx?bookid=<%# Eval("BookId") %>" class="image fit">
-                                    <img src="<%# Eval("BookImage")!=DBNull.Value ? fyp.ImageHandler.GetImage((byte[])Eval("BookImage")): "images/defaultCoverBook.png" %>" alt="" width="100" height="300" /></a>
+                                    <img src="<%# Eval("BookImage")!=DBNull.Value ? fyp.ImageHandler.GetImage((byte[])Eval("BookImage")): "images/defaultCoverBook.png" %>" alt="" width="50" height="250" /></a>
                                 <h4><%# Eval("BookTitle") %></h4>
                             </div>
                         </ItemTemplate>

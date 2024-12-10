@@ -50,7 +50,7 @@ namespace fyp
                 }
 
                 int initialTrustScore = UserRole == "Student" ? 100 : 120;
-                string initialTrustLvl = UserRole == "Student" ? "high" : "very high";
+                string initialTrustLvl = UserRole == "Student" ? "High" : "Very High";
 
                 // Check if username or email already exists
                 string queryFindUser = "SELECT COUNT(*) FROM [User] WHERE UserName = @UserName OR UserEmail = @UserEmail";

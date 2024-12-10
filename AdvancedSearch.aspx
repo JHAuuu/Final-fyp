@@ -279,11 +279,7 @@
                                             </p>
                                             <p class="book-detail">
                                                 <span>Author: </span>
-                                                <asp:Repeater ID="rptAuthors" runat="server">
-                                                    <ItemTemplate>
-                                                        <span><%# Eval("AuthorName") %></span>
-                                                    </ItemTemplate>
-                                                </asp:Repeater>
+                                                        <span><%# Eval("AuthorNames") %></span>
                                             </p>
                                         </div>
                                         <div class="view-details-button-wrapper">

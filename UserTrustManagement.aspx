@@ -153,7 +153,7 @@
         <div class="popup-body">
             <div class="popup-content">
                 <div class="left">
-                    <img src="Image/user-image.jpg" alt="User-photo">
+                    <img src="images/user-image.jpg" alt="User-photo">
                     <h4 id="popupUserId">User ID : </h4>
                     <h4 id="popupUserName">User Name : </h4>
                 </div>

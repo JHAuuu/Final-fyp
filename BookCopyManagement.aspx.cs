@@ -439,7 +439,7 @@ namespace fyp
                     // Proceed to update the IsDeleted field for the specific BookCopyId
                     string updateBookQuery = "UPDATE BookCopy SET IsDeleted = 1 WHERE BookCopyId = @BookCopyId";
                     fyp.DBHelper.ExecuteNonQuery(updateBookQuery, new object[] { "@BookCopyId", bookCopyId });
-
+                    PredefinedData();
                     return "Success";  // Return success if the update is successful
                 }
                 else

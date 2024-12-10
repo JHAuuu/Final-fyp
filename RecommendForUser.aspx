@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="assets/css/modal.css" />
     <link rel="stylesheet" href="assets/css/recommendation.css" />
     <link rel="stylesheet" href="assets/css/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
@@ -44,8 +45,10 @@
                                         <span>Author:</span><%# Eval("AuthorNames") %>
                                     </p>
                                     <p class="book-detail">
-                                       <span> This Book Similiar To </span><strong> <%# Eval("SimilarTo") %></strong>
+                                       <span style="text-decoration: underline;font-weight: bold;"> This Book Similiar To </span> 
+                                        
                                     </p>
+                                    <strong><%# Eval("SimilarTo").ToString().Replace("\n", " ").Replace("\r", " ").Trim() %></strong>
                                 </div>
                                 <div class="view-details-button-wrapper">
                                     <a href="BookDetail.aspx?bookid=<%# Eval("BookId") %>" class="view-details-button">View Details</a>

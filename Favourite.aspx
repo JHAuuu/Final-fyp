@@ -24,17 +24,17 @@
         <div class="product-container">
             <asp:Repeater runat="server" ID="rptBooks">
                 <ItemTemplate>
-                    <div class="card">
+                    <a href="BookDetail.aspx?bookid=<%# Eval("BookId") %>" class="card" >
                         <div class="title"><%# Eval("BookTitle") %></div>
                         <div class="image">
-                            <img src="images/bookimg.jpg" alt="HI" />
+                            <img src="<%# Eval("BookImage") != DBNull.Value ? Eval("BookImage"): "images/defaultCoverBook.png"  %>" alt="HI" />
                         </div>
 
                         <div class="fav-btn fav-id<%#Eval("BookId") %> active" id="<%# Eval("FavId")  %>" onclick="removeFav('<%# Eval("BookId") %>','<%# Request.QueryString["groupId"] %>',this)">
                             <i class="fa fa-heart"></i>
                         </div>
 
-                    </div>
+                    </a>
                 </ItemTemplate>
             </asp:Repeater> 
 

@@ -15,7 +15,7 @@
         <div class="buttons">
             <asp:Button ID="btnDraft" runat="server" CssClass="draft-Book-button" Text="Draft Book" OnClientClick="showDraftModal(); return false;"/>
             <div id="draftBookModal" class="modal" style="display: none;">
-    <div class="modal-content">
+    <div class="modal-content" style="width:75%;">
         <span class="close" onclick="hideDraftModal()">&times;</span>
         <h3 style="text-align: center; color: #333;">Draft Books</h3>
 
@@ -155,10 +155,6 @@
             document.getElementById('addBookModal').style.display = 'block';
         }
 
-        function hideAddBookModal() {
-            document.getElementById('addBookModal').style.display = 'none';
-        }
-
         function validateCheckboxList(sender, args) {
             var checkBoxList = document.getElementById('<%= cblCategoryIds.ClientID %>');
             var checkboxes = checkBoxList.getElementsByTagName("input");
@@ -173,8 +169,29 @@
         };
 
         function hideAddBookModal() {
+            // Hide the modal
             document.getElementById("addBookModal").style.display = "none";
-            document.getElementById('<%= hfModalState.ClientID %>').value = 'false'; // Reset modal state
+
+            // Reset the modal state
+            document.getElementById('<%= hfModalState.ClientID %>').value = 'false';
+
+            // Clear all input fields in the modal except the submit button
+            const modal = document.getElementById("addBookModal");
+            const inputs = modal.querySelectorAll("input, textarea, select");
+
+            inputs.forEach(input => {
+                if (input.type === "checkbox" || input.type === "radio") {
+                    input.checked = false; // Uncheck checkboxes and radio buttons
+                } else if (input.tagName.toLowerCase() === "select") {
+                    input.selectedIndex = 0; // Reset dropdowns
+                } else if (input.type !== "submit" && input.type !== "button") {
+                    input.value = ""; // Clear text, file, and other input types
+                }
+            });
+
+            // Clear validation messages
+            const errorMessages = modal.querySelectorAll(".error-message, .validation-summary-errors");
+            errorMessages.forEach(error => (error.innerText = ""));
         }
 
         function validateForm() {

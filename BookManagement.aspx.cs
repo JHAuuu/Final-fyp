@@ -68,7 +68,8 @@ namespace fyp
                 {
                     string script = "alert('The book \"" + txtBookTitle.Text + "\" already exists.');";
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "BookExistsAlert", script, true);
-                    ClearFormFields();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "OpenAddBookModal", "showAddBookModal();", true);
+                    return;
                 }
                 else
                 {
@@ -139,6 +140,7 @@ namespace fyp
                     BooksRepeater.DataBind();
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessAlert", "alert('Book inserted successfully!');", true);
                     ClearFormFields();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "CloseAddBookModal", "hideAddBookModal();", true);
                 }
             }
             catch (Exception ex)

@@ -11,10 +11,6 @@
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-                    <div>
-            <!-- Image Back Button -->
-            <img src="images/back-button.png" alt="Back" onclick="history.back(); return false;" class="back-button" />
-        </div>
 <div>
     <header>
         <h1>ISBN Scanner</h1>

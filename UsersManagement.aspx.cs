@@ -203,7 +203,7 @@ namespace fyp
                                   userEmail.EndsWith("@tarc.edu.my") ? "Teacher" : null;
 
                 int initialTrustScore = UserRole == "Student" ? 100 : 120;
-                string initialTrustLvl = UserRole == "Student" ? "high" : "very high";
+                string initialTrustLvl = UserRole == "Student" ? "High" : "Very High";
 
                 // Insert new user into the [User] table
                 string insertUserQuery = "INSERT INTO [User] (UserName, UserEmail, UserPhoneNumber, UserAddress, UserPassword, UserRole) " +
@@ -288,14 +288,17 @@ namespace fyp
 
             // Define the base SQL query for users with UserRole = 'User'
             string baseQuery = @"
-            SELECT DISTINCT 
-                CAST([User].UserId AS INT) AS UserId, 
-                [User].UserName, 
-                [User].UserAddress, 
-                [User].UserEmail, 
-                [User].UserPhoneNumber 
-            FROM [User] 
-            WHERE [UserRole] IN ('Student', 'Teacher') AND [IsDeleted] = 0";
+                SELECT DISTINCT 
+                    CAST([User].UserId AS INT) AS UserId, 
+                    [User].UserName, 
+                    [User].UserAddress, 
+                    [User].UserEmail, 
+                    [User].UserPhoneNumber 
+                FROM [User]
+                INNER JOIN Patron ON [User].UserId = Patron.UserId
+                INNER JOIN Trustworthy ON Patron.PatronId = Trustworthy.PatronId
+                WHERE [UserRole] IN ('Student', 'Teacher') 
+                  AND [IsDeleted] = 0";
 
             try
             {
@@ -314,14 +317,19 @@ namespace fyp
                 else if (selectedValue == "Overdue")
                 {
                     SqlDataSource1.SelectCommand = baseQuery + @"
-                    AND [User].UserId IN (
-                        SELECT DISTINCT CAST(U.UserId AS INT)
-                        FROM [User] AS U
-                        INNER JOIN Patron AS P ON U.UserId = P.UserId
-                        INNER JOIN Loan AS L ON P.PatronId = L.PatronId
-                        WHERE L.EndDate < CAST(GETDATE() AS DATE) 
-                        AND L.LatestReturn IS NOT NULL
-                    )";
+                        AND [User].UserId IN (
+                            SELECT DISTINCT CAST(U.UserId AS INT)
+                            FROM [User] AS U
+                            INNER JOIN Patron AS P ON U.UserId = P.UserId
+                            INNER JOIN Loan AS L ON P.PatronId = L.PatronId
+                            WHERE L.EndDate < CAST(GETDATE() AS DATE)
+                            AND L.Status = 'loaning'
+                        )";
+                }
+                else if (selectedValue == "Restricted")
+                {
+                    SqlDataSource1.SelectCommand = baseQuery + @"
+                       AND Trustworthy.TrustLvl = 'Restricted'";
                 }
                 else
                 {
@@ -336,7 +344,6 @@ namespace fyp
                 ClientScript.RegisterStartupScript(this.GetType(), "alert", $"alert('Error: {ex.Message}');", true);
             }
         }
-
         protected void ddlFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Get the selected filter value

@@ -200,6 +200,7 @@
             <asp:ListItem Value="All">All Users</asp:ListItem>
             <asp:ListItem Value="Loan">Book loaning users</asp:ListItem>
             <asp:ListItem Value="Overdue">Users who loan overdue books</asp:ListItem>
+            <asp:ListItem Value="Restricted">Restricted user</asp:ListItem>
         </asp:DropDownList>
 
         <asp:Button ID="btnAddUser" runat="server" CssClass="add-user-button" Text="Register Users" OnClientClick="showAddUserModal(); return false;" />
@@ -389,7 +390,7 @@ WHERE
                     <asp:RequiredFieldValidator ID="rfvUserPhoneNumber" runat="server" ControlToValidate="txtUserPhoneNumber"
                         ErrorMessage="Phone number is required." CssClass="error-message" Display="Dynamic" ValidationGroup="UserUpdate" />
                     <asp:RegularExpressionValidator ID="revUserPhoneNumber" runat="server" ControlToValidate="txtUserPhoneNumber"
-                        ValidationExpression="/^01\d{8,9}$/" ErrorMessage="Phone number must be 10-11 digits."
+                        ValidationExpression="^01\d{8,9}$" ErrorMessage="Phone number must be 10-11 digits."
                         CssClass="error-message" Display="Dynamic" ValidationGroup="UserUpdate"/>
                 </EditItemTemplate>
             </asp:TemplateField>

@@ -40,6 +40,7 @@ namespace fyp
         B.BookTitle,
         B.BookDesc,
         B.BookSeries,
+        B.BookImage,
         (SELECT STRING_AGG(C.CategoryName, ', ') 
          FROM BookCategory BC 
          JOIN Category C ON BC.CategoryId = C.CategoryId 
@@ -51,7 +52,7 @@ namespace fyp
     FROM 
         Book B
     WHERE
-            B.IsDeleted = 0
+        B.IsDeleted = 0
 ),
 SimilarBooks AS (
     SELECT 
@@ -59,9 +60,10 @@ SimilarBooks AS (
         BD.BookTitle,
         BD.BookDesc,
         BD.BookSeries,
+        BD.BookImage,
         BD.CategoryNames,
         BD.AuthorNames,
-        (SELECT TOP 1 F.BookId
+        (SELECT STRING_AGG(F.BookId, ', ') 
          FROM Favourite F
          WHERE F.PatronId = @PatronId
            AND (
@@ -82,8 +84,7 @@ SimilarBooks AS (
                                 WHERE BA2.BookId = BD.BookId
                             ))
            )
-         ORDER BY F.Date DESC -- Pick the most recent similar book
-        ) AS SimilarBookId
+        ) AS SimilarBookIds
     FROM 
         BookDetails BD
     WHERE 
@@ -94,13 +95,20 @@ SELECT
     SB.BookTitle,
     SB.BookDesc,
     SB.BookSeries,
+    SB.BookImage,
     SB.CategoryNames,
     SB.AuthorNames,
-    (SELECT BookTitle FROM Book WHERE BookId = SB.SimilarBookId) AS SimilarTo
+    (SELECT STRING_AGG(BookTitle, ', ')
+     FROM Book 
+     WHERE BookId IN (SELECT value FROM STRING_SPLIT(SB.SimilarBookIds, ','))
+    ) AS SimilarTo
 FROM 
     SimilarBooks SB
+WHERE 
+    SB.SimilarBookIds IS NOT NULL -- Exclude rows without any similar books
 ORDER BY 
     SB.BookTitle;
+
       ";
 
 

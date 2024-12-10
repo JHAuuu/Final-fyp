@@ -106,38 +106,66 @@ namespace fyp
 
         public DataTable getPreferencesList()
         {
-            string query = @"SELECT 
-    b.BookId,
-    b.BookTitle,
-    b.BookDesc,
-    b.BookSeries,
-   (SELECT STRING_AGG(c.CategoryName, ', ') 
-     FROM BookCategory bcg 
-     JOIN Category c ON bcg.CategoryId = c.CategoryId 
-     WHERE bcg.BookId = b.BookId) AS CategoryNames,  -- Concatenate all categories for each book
-    CAST(SUM(r.RateStarts) * 1.0 / COUNT(r.RateStarts) AS DECIMAL(3,1)) AS AverageRating,
-    COUNT(r.RateStarts) AS RatingCount,
-    b.BookImage
-FROM 
-    Book AS b
-INNER JOIN 
-    BookCategory AS bc ON b.BookId = bc.BookId
-INNER JOIN 
-    Category AS c ON bc.CategoryId = c.CategoryId  -- Get all categories for each book
-INNER JOIN 
-    Rating AS r ON r.BookId = b.BookId
-WHERE 
-    b.BookId IN (
-        SELECT DISTINCT b.BookId
-        FROM Book b
-        INNER JOIN BookCategory bc ON b.BookId = bc.BookId
-        INNER JOIN Preferences p ON p.CategoryId = bc.CategoryId
-        WHERE p.PatronId = @userid
-    ) AND  b.IsDeleted = 0 -- Subquery to filter books based on user preferences
-GROUP BY 
-    b.BookId, b.BookTitle, b.BookDesc, b.BookSeries, b.BookImage
-ORDER BY 
-    AverageRating DESC, RatingCount DESC;         
+            string query = @"-- Common Table Expression (CTE) for books based on user preferences
+WITH PreferredBooks AS (
+    SELECT 
+        b.BookId,
+        b.BookTitle,
+        b.BookDesc,
+        b.BookSeries,
+        (SELECT STRING_AGG(c.CategoryName, ', ') 
+         FROM BookCategory bcg 
+         JOIN Category c ON bcg.CategoryId = c.CategoryId 
+         WHERE bcg.BookId = b.BookId) AS CategoryNames,
+        CAST(SUM(r.RateStarts) * 1.0 / COUNT(r.RateStarts) AS DECIMAL(3,1)) AS AverageRating,
+        COUNT(r.RateStarts) AS RatingCount,
+        b.BookImage
+    FROM 
+        Book AS b
+    LEFT JOIN 
+        BookCategory AS bc ON b.BookId = bc.BookId
+    LEFT JOIN 
+        Category AS c ON bc.CategoryId = c.CategoryId
+    LEFT JOIN 
+        Rating AS r ON r.BookId = b.BookId
+    WHERE 
+        EXISTS (
+            SELECT 1
+            FROM Preferences p
+            WHERE p.CategoryId = bc.CategoryId AND p.PatronId = 8
+        )
+    GROUP BY 
+        b.BookId, b.BookTitle, b.BookDesc, b.BookSeries, b.BookImage
+),
+FallbackBooks AS (
+    -- Fallback: Random books if no PreferredBooks exist
+    SELECT 
+        b.BookId,
+        b.BookTitle,
+        b.BookDesc,
+        b.BookSeries,
+        (SELECT STRING_AGG(c.CategoryName, ', ') 
+         FROM BookCategory bcg 
+         JOIN Category c ON bcg.CategoryId = c.CategoryId 
+         WHERE bcg.BookId = b.BookId) AS CategoryNames,
+        CAST(SUM(r.RateStarts) * 1.0 / COUNT(r.RateStarts) AS DECIMAL(3,1)) AS AverageRating,
+        COUNT(r.RateStarts) AS RatingCount,
+        b.BookImage
+    FROM 
+        Book AS b
+    LEFT JOIN 
+        Rating AS r ON r.BookId = b.BookId
+    GROUP BY 
+        b.BookId, b.BookTitle, b.BookDesc, b.BookSeries, b.BookImage
+)
+-- Final query to select preferred books or fallback books
+SELECT *
+FROM PreferredBooks
+UNION ALL
+SELECT TOP 10 *
+FROM FallbackBooks
+WHERE NOT EXISTS (SELECT 1 FROM PreferredBooks)
+ORDER BY AverageRating DESC, RatingCount DESC;        
                                     ";
 
 

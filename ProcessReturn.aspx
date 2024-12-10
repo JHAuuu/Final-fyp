@@ -253,7 +253,7 @@
 
         </div>
 
-        <div id="scanner-container" style="display: none;">
+        <div id="scanner-container" style="display: none;background-color:darkgray;">
             <h2>Scan the book's ISBN</h2>
             <video id="video" autoplay playsinline></video>
             <div id="scan-result-container">

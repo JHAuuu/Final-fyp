@@ -17,10 +17,7 @@
     /* Add more styling as needed */
 }
    </style>
-     <div>
-            <!-- Image Back Button -->
-            <img src="images/back-button.png" alt="Back" onclick="history.back(); return false;" class="back-button" />
-        </div>
+
         <div class="comment-page-container">
         <h2>Rate & Comment</h2>
 

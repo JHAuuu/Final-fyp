@@ -400,7 +400,20 @@ AND l.LatestReturn IS NULL;
 
                         if (insertLoan > 0)
                         {
-                            return "SUCCESS";
+                            string BookCopyQuery = @"
+UPDATE BookCopy SET IsAvailable = 0 WHERE ISBN = @isbn;";
+                            int updateBookCopy = DBHelper.ExecuteNonQuery(BookCopyQuery, new string[]{
+                    "isbn", ISBN
+                });
+                            if(updateBookCopy > 0)
+                            {
+                                return "SUCCESS";
+                            }
+                            else
+                            {
+                                return "Failed to loan the book";
+                            }
+                           
                         }
                         else
                         {

@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace fyp
 {
-    public partial class Favourite : System.Web.UI.Page
+    public partial class Favourite : UserPage
     {
         static int userid = 0;
         protected void Page_Load(object sender, EventArgs e)
