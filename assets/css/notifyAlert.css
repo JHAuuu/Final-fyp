@@ -1,0 +1,88 @@
+﻿/* Notification container */
+.notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    width: 320px;
+    display: none; /* Hidden by default */
+    animation: fadeIn 0.5s ease-in-out; /* Smooth fade-in animation */
+}
+
+/* Individual notification box */
+.notification {
+    background-color: #343a40; /* Dark theme for a modern look */
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+    position: relative;
+    margin-bottom: 15px; /* Spacing between multiple notifications */
+    overflow-wrap: break-word; /* Prevent text overflow */
+    border-left: 6px solid #007bff; /* Default border for inbox */
+    transition: transform 0.3s, opacity 0.3s; /* Smooth hover effect */
+}
+
+/* Types of notifications */
+.notification-container[data-type="announcement"] .notification {
+    border-left-color: #28a745; /* Green border for announcements */
+}
+
+.notification-container[data-type="inbox"] .notification {
+    border-left-color: #007bff; /* Blue border for inbox notifications */
+}
+
+/* Notification title styling */
+.notification strong {
+    display: block;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Notification close button */
+.close-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+    .close-btn:hover {
+        color: #ff4d4d; /* Red hover effect */
+    }
+
+/* Animation for showing the notification */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Optional hover effect */
+.notification:hover {
+    transform: scale(1.03); /* Slight zoom on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .notification-container {
+        width: 90%; /* Adapt width for smaller screens */
+        right: 5%;
+        top: 10px;
+    }
+}

@@ -1,0 +1,478 @@
+﻿body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #f3eac4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.book-card {
+    background-color: white;
+    /*width: 80%;
+    max-width: 900px;*/
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Flexbox for book cover and details */
+.book-info {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.book-cover {
+    flex-basis: 25%;
+    margin-right: 20px;
+}
+
+    .book-cover img {
+        width: 100%;
+        border-radius: 5px;
+    }
+
+.book-details {
+    flex-basis: 70%;
+}
+
+.book-title {
+    font-size: 1.8em;
+    font-weight: 600;
+    margin: 0 0 10px;
+}
+
+.book-author {
+    font-size: 1.2em;
+    color: #0073b1;
+    margin-bottom: 10px;
+}
+
+.ratings {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+    .ratings span {
+        font-size: 1em;
+        margin-left: 8px;
+        color: #666;
+    }
+
+.book-summary {
+    line-height: 1.5;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+.category {
+    font-size: 0.9em;
+    color: #0073b1;
+    margin-bottom: 10px;
+}
+
+/* Editions section style */
+.editions {
+    width: 100%;
+    margin-top: 20px;
+}
+
+    .editions h3 {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+.top-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+    .top-section select {
+        padding: 5px;
+        font-size: 0.9em;
+    }
+
+.bookCopy-card {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.grid-header {
+    padding: 10px; /* Add padding to the header */
+}
+
+.bookCopyCover {
+    width: 40px;
+    border-radius: 5px;
+}
+
+.edition-title {
+    font-weight: 600;
+}
+
+.btn i {
+    padding: 11px 12px;
+    background-color: #0073b1;
+}
+
+.available .availability-button {
+    padding: 8px 12px;
+    background-color: #1da83d;
+    color: white; /* Ensure text is white */
+    border: none; /* Remove default button border */
+    border-radius: 4px; /* Rounded corners */
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.btn i,
+.unavailable .availability-button {
+    padding: 8px 12px;
+    background-color: #8390A2;
+    color: white; /* Ensure text is white */
+    border: none; /* Remove default button border */
+    border-radius: 4px; /* Rounded corners */
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.availability-button:hover {
+    opacity: 0.8; /* Add hover effect for feedback */
+}
+
+.pagination {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.add-book-button {
+    background-color: #1da83d;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.available button:hover,
+.buttons button:hover {
+    background-color: #22bf47;
+    transition: 300ms;
+}
+
+.btn i:hover {
+    background-color: #005f8a;
+    transition: 300ms;
+}
+
+.unavailable button:hover {
+    transition: 300ms;
+    background-color: #59626f;
+}
+
+.btn-contain {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
+    width: 100%;
+}
+
+.btn-book {
+    width: 100%;
+}
+
+.edit-button,
+.delete-button {
+    width: 49%;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition */
+}
+
+.edit-button {
+    background-color: #007BFF; /* Blue */
+}
+
+.delete-button {
+    background-color: #DC3545; /* Red */
+}
+
+/* Hover effects */
+.edit-button:hover {
+    background-color: #0056b3; /* Darker blue */
+    transform: scale(1.05); /* Slightly enlarge the button */
+}
+
+.delete-button:hover {
+    background-color: #c82333; /* Darker red */
+    transform: scale(1.05); /* Slightly enlarge the button */
+}
+
+.modal {
+    position: fixed;
+    z-index: 1000;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: auto;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: slide-down 0.4s ease;
+}
+
+@keyframes slide-down {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+/* Close button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.2s;
+}
+
+    .close:hover {
+        color: #333;
+    }
+
+/* Input fields */
+.input-field {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+    .input-field:focus {
+        border-color: #007bff;
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+    }
+
+/* Submit button */
+.button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+    .button:hover {
+        background-color: #0056b3;
+    }
+
+.bookCopyCoverPre {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.grid-view {
+    width: 100%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+    /* Header Styling */
+    .grid-view th {
+        background-color: #007bff;
+        color: #fff;
+        text-align: left;
+        padding: 10px;
+        text-transform: uppercase;
+        border: 1px solid #ddd;
+        font-weight: bold;
+    }
+
+    /* Data Row Styling */
+    .grid-view td {
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
+    /* Alternating Row Colors */
+    .grid-view tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    /* Hover Effect on Rows */
+    .grid-view tr:hover {
+        background-color: #f1f1f1;
+    }
+
+/* Buttons in Action Column */
+.grid-button {
+    background-color: #28a745;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+    .grid-button:hover {
+        background-color: #218838;
+    }
+
+/* Pagination Styling */
+.grid-view .pager {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #f9f9f9;
+}
+
+    .grid-view .pager a {
+        margin: 0 5px;
+        padding: 5px 10px;
+        text-decoration: none;
+        color: #007bff;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+        .grid-view .pager a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+    .grid-view .pager .current-page {
+        font-weight: bold;
+        color: #fff;
+        background-color: #007bff;
+        border: 1px solid #007bff;
+        border-radius: 3px;
+        padding: 5px 10px;
+    }
+
+.barcode-button {
+    background-color: #ffffff; /* White background to contrast with blue header */
+    border: 2px solid #007bff; /* Blue border for consistency */
+    color: #007bff; /* Blue text */
+    padding: 10px 20px; /* Padding around the text */
+    font-size: 14px; /* Text size */
+    font-weight: bold; /* Make the text bold */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    display: inline-flex; /* Flexbox for alignment */
+    align-items: center; /* Align text and icon (if any) vertically */
+    border-radius: 50px; /* Rounded corners */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+    /* Hover Effect */
+    .barcode-button:hover {
+        background-color: #f1f1f1; /* Light gray background on hover */
+        border-color: #0056b3; /* Darker blue border on hover */
+        color: #0056b3; /* Darker blue text on hover */
+        transform: translateY(-2px); /* Slight lift effect on hover */
+    }
+
+    /* Focus Effect (when clicked or focused) */
+    .barcode-button:focus {
+        outline: none; /* Remove default outline */
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.6); /* Subtle blue shadow to indicate focus */
+    }
+
+.deleteBC-button {
+    background-color: #dc3545; /* Red background */
+    color: white; /* White icon color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Adequate padding */
+    font-size: 16px; /* Larger icon size */
+    cursor: pointer; /* Pointer cursor on hover */
+    display: inline-flex; /* Flexbox for alignment */
+    align-items: center; /* Center icon vertically */
+    justify-content: center; /* Center icon horizontally */
+    width: 100%; /* Full width */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+    /* Hover Effect */
+    .deleteBC-button:hover {
+        background-color: #c82333; /* Darker red on hover */
+        transform: translateY(-2px); /* Slight lift effect */
+    }
+
+    /* Focus Effect */
+    .deleteBC-button:focus {
+        outline: none; /* Remove default outline */
+        box-shadow: 0 0 5px rgba(220, 53, 69, 0.5); /* Red shadow to indicate focus */
+    }
+
+    /* Icon Styling */
+    .deleteBC-button i {
+        pointer-events: none; /* Prevent mouse events on icon */
+    }
+
+.availability-status i {
+    margin-right: 5px;
+}
+
+.fas.fa-check-circle {
+    color: #4CAF50; /* Green for Available */
+}
+
+.fas.fa-times-circle {
+    color: #f44336; /* Red for Unavailable */
+}
+
+.error-message {
+    font-size: 12px;
+    margin-top: 5px;
+    font-weight: bold;
+}

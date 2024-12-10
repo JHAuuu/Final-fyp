@@ -1,0 +1,129 @@
+﻿.card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1em;
+    box-shadow: 0px 10px 5px #b2bec3;
+    text-align: center;
+    font-family: "Poppins";
+}
+
+    .card .title {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .card img {
+        max-width: 100%;
+        border-radius: 5px;
+    }
+
+    .card .text {
+        text-align: left;
+        margin-left: 2em;
+        margin-bottom: 0.5em;
+        font-size: 12px;
+    }
+
+
+.product-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 40px;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.card img {
+    margin-top: 5px;
+    width: 200px;
+    height: 300px;
+    transition: 0.5s ease;
+}
+
+.card:hover img {
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+}
+
+.fav-btn.active{
+    color: red;
+}
+.fav-btn {
+    color: #5B5B5B;
+}
+    .fav-btn.active:hover {
+        color: #5B5B5B;
+    }
+
+    .fav-btn:hover {
+        color: red;
+        cursor: pointer;
+    }
+
+.container-list {
+    margin: auto;
+    box-shadow: 0 0 2px hsla(0,0%,0%,0.2);
+    border-radius: 6px;
+    background-color: #f8f8f8;
+}
+
+.task--row {
+    height: 50px;
+    padding: 0 20px;
+    line-height: 50px;
+}
+.task {
+    overflow: hidden;
+    transition: all 0.2s 0.2s cubic-bezier(.7,.2,.17,1);
+    position: relative;
+}
+.task__check {
+    position: absolute;
+    left: -9999px;
+    z-index: -1;
+}
+.task__field {
+    transition: background-size 0.8s 0.2s cubic-bezier(.7,.2,.17,1), background-color 0.2s cubic-bezier(.7,.2,.17,1), height 0.2s 1s cubic-bezier(.7,.2,.17,1);
+    position: relative;
+    background-color: #f8f8f8;
+    border-top: 1px solid #eee;
+    background-image: linear-gradient(to right, #FE5F55, red);
+    background-size: 0 2px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+}
+
+    .task__field:hover {
+        background-color: white;
+    }
+
+.task:first-child .task__field {
+    border-top: none;
+}
+
+.task__check:checked + .task__field {
+    color: #47D185;
+}
+
+.task__important {
+    transition: all 0.3s cubic-bezier(.09,.66,.36,1.8) !important;
+    opacity: 0 !important;
+    position: absolute !important;
+    right: 0 !important;
+    top: 0 !important;
+    transform: scale(0) !important;
+    color: #47D185 !important;
+    font-size: 1.4em !important;
+    height: 50px !important;
+    width: 50px !important;
+    border: 0 !important;
+    background: none !important;
+}
+
+.task__check:checked + .task__field > .task__important {
+    opacity: 0.5 !important;
+    transform: scale(1) !important;
+}

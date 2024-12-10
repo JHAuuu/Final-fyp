@@ -1,0 +1,80 @@
+﻿/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Body Styles */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Container */
+.container {
+    text-align: center;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+}
+
+/* Back Button */
+.back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+    .back-button button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        .back-button button:hover {
+            background-color: #0056b3;
+        }
+
+/* Content */
+h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #e74c3c;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+/* Login Button */
+.btn-login {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+    .btn-login:hover {
+        background-color: #218838;
+    }

@@ -1,0 +1,107 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.comment-page-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 500px; /* Increased width */
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 30px;
+    font-size: 36px; /* Bigger heading size */
+}
+
+.rating-container {
+    margin-bottom: 30px;
+}
+
+.star-rating .star {
+    font-size: 50px; /* Increased star size */
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+    .star-rating .star:hover,
+    .star-rating .star.active {
+        color: gold;
+    }
+
+.comment-container {
+    margin-bottom: 30px;
+}
+
+#comment-box {
+    width: 100%;
+    height: 150px; /* Increased height for comment box */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    resize: none;
+    outline: none;
+    font-size: 18px; /* Bigger text size */
+}
+
+.submit-btn {
+    background-color: #f44336;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px; /* Increased button text size */
+    margin-top: 15px;
+    width: 100%;
+}
+
+.cancel-btn {
+    background-color: #888;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px; /* Increased button text size */
+    margin-top: 15px;
+    width: 100%;
+}
+
+    .cancel-btn:hover {
+        background-color: #585858;
+    }
+
+.submit-btn:hover {
+    background-color: #83443d;
+}
+
+.user-comment-section {
+    margin-top: 30px;
+    text-align: left;
+    font-size: 18px; /* Larger font size for the comment section */
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+    .user-comment-section p {
+        margin-bottom: 15px;
+    }
+
+    .user-comment-section strong {
+        font-weight: bold;
+    }

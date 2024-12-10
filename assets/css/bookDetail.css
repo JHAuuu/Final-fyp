@@ -1,0 +1,221 @@
+﻿.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.details {
+    width: 500px;
+}
+
+    .details * {
+        margin-bottom: 10px;
+        /* adds 10px spacing between each element */
+    }
+
+.comment-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.comment-box {
+    margin-bottom: 20px;
+}
+
+    .comment-box textarea {
+        width: 100%;
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+    }
+
+.comment {
+    background-color: #f4f8f7;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.comment-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.time {
+    color: #888;
+    font-size: 14px;
+}
+
+.comment-text {
+    margin-bottom: 10px;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.like {
+    color: #888;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+    .like i.fas {
+        color: #e74c3c; /* Red for liked */
+    }
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-btn, .delete-btn {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.edit-btn {
+    background-color: #4caf50;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.join {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.join-btn {
+    background-color: #3cb371;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+.cmt {
+    color: #e74c3c;
+}
+
+    .cmt:hover {
+        color: #5B5B5B;
+    }
+
+.user-cmt {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+
+.fav-btn.active {
+    color: red;
+}
+
+.fav-btn {
+    color: #5B5B5B;
+}
+
+    .fav-btn.active:hover {
+        color: #5B5B5B;
+    }
+
+    .fav-btn:hover {
+        color: red;
+        cursor: pointer;
+    }
+.star.active {
+    color: gold;
+}
+
+.container-list {
+    margin: auto;
+    box-shadow: 0 0 2px hsla(0,0%,0%,0.2);
+    border-radius: 6px;
+    background-color: #f8f8f8;
+}
+
+.task--row {
+    height: 50px;
+    padding: 0 20px;
+    line-height: 50px;
+}
+
+.task {
+    overflow: hidden;
+    transition: all 0.2s 0.2s cubic-bezier(.7,.2,.17,1);
+    position: relative;
+}
+
+.task__check {
+    position: absolute;
+    left: -9999px;
+    z-index: -1;
+}
+
+.task__field {
+    transition: background-size 0.8s 0.2s cubic-bezier(.7,.2,.17,1), background-color 0.2s cubic-bezier(.7,.2,.17,1), height 0.2s 1s cubic-bezier(.7,.2,.17,1);
+    position: relative;
+    background-color: #f8f8f8;
+    border-top: 1px solid #eee;
+    background-image: linear-gradient(to right, #FE5F55, red);
+    background-size: 0 2px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+}
+
+    .task__field:hover {
+        background-color: white;
+    }
+
+.task:first-child .task__field {
+    border-top: none;
+}
+
+.task__check:checked + .task__field {
+    color: #47D185;
+}
+
+.task__important {
+    transition: all 0.3s cubic-bezier(.09,.66,.36,1.8) !important;
+    opacity: 0 !important;
+    position: absolute !important;
+    right: 0 !important;
+    top: 0 !important;
+    transform: scale(0) !important;
+    color: #47D185 !important;
+    font-size: 1.4em !important;
+    height: 50px !important;
+    width: 50px !important;
+    border: 0 !important;
+    background: none !important;
+}
+
+.task__check:checked + .task__field > .task__important {
+    opacity: 0.5 !important;
+    transform: scale(1) !important;
+}

@@ -1,0 +1,313 @@
+﻿/* General styles for the book item layout */
+.book-item {
+    display: flex;
+    /* Aligns image and details side by side */
+    align-items: center;
+    /* Vertically centers content within the flex container */
+    margin-bottom: 20px;
+    /* Adds space below each book item */
+    border-bottom: 1px solid #e0e0e0;
+    /* Adds a subtle border at the bottom for separation */
+    padding: 20px 0;
+    /* Adds padding to the top and bottom */
+}
+
+/* Styles for the book image */
+.book-image {
+    flex: 1;
+    max-width: 150px;
+    /* Sets maximum width for the image */
+    margin-right: 20px;
+    /* Adds space between the image and the book details */
+}
+
+    .book-image img {
+        width: 100%;
+        /* Ensures the image is responsive and fits its container */
+        height: auto;
+        /* Maintains the image's aspect ratio */
+        border-radius: 8px;
+        /* Adds a slight border radius for a rounded edge look */
+    }
+
+/* Styles for the book details */
+.book-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.book-info {
+    flex: 1;
+    /* Adjust this value if needed */
+}
+
+/* Styles for the book title */
+.book-title {
+    font-size: 1.5em;
+    /* Increases font size for the title */
+    margin-bottom: 10px;
+    /* Adds space below the title */
+}
+
+/* Styles for the "View Details" button */
+.view-details-button {
+    align-self: flex-start;
+    /* Aligns the button to the left within its container */
+    background-color: #df7366;
+    /* Button background color */
+    color: white;
+    /* Button text color */
+    padding: 10px 20px;
+    /* Adds padding inside the button */
+    text-decoration: none;
+    /* Removes underline from the link */
+    border-radius: 5px;
+    /* Rounds the button's corners */
+    margin-top: 15px;
+    /* Adds space above the button */
+    transition: background-color 0.3s;
+    /* Adds a smooth transition for hover effect */
+}
+
+    /* Hover effect for the "View Details" button */
+    .view-details-button:hover {
+        background-color: #83443d;
+        /* Darkens button color on hover */
+        color: white;
+    }
+
+.book-detail {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+    .book-detail span {
+        margin-right: 5px;
+        /* Adjust this value to control the spacing */
+    }
+
+.filter-bar-container {
+    justify-content: center;
+    /* Horizontally center the content */
+    align-items: center;
+    /* Vertically center the content */
+}
+
+.filter-bar-container,
+.modal-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0 10%;
+    /* Adjust padding values as needed */
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+    .search-form input[type="text"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+
+    .search-form button {
+        padding: 10px 20px;
+        background-color: #df7366;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+.pagination-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+    .pagination-links li {
+        margin: 0 5px;
+    }
+
+    .pagination-links a {
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        text-decoration: none;
+    }
+
+    .pagination-links .previous,
+    .pagination-links .next {
+        font-weight: bold;
+    }
+
+    .pagination-links .disabled {
+        opacity: 0.5;
+        cursor: default;
+    }
+
+.pagination-numbers {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.pagination-numbers-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .pagination-numbers-list li {
+        margin: 0 5px;
+    }
+
+.filter-btn {
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    background-color: black;
+    color: #fff;
+    border-radius: 18px;
+}
+
+.add-btn:hover {
+    background-color: grey;
+    color: black;
+}
+
+.btn-close {
+    background-color: grey;
+}
+
+.btn-category:hover {
+    background-color: white;
+    color: black;
+}
+
+.btn-category-reset {
+    background-color: #007bff;
+}
+
+
+.modal-body > .filter-btn {
+    background-color: #C0C0C0;
+    color: black;
+}
+
+    .modal-body > .filter-btn:hover {
+        background-color: black;
+        color: #fff;
+    }
+
+.modal-body > .active {
+    
+    background-color: black;
+    color: #fff;
+    
+}
+
+    .modal-body > .active:hover {
+        
+        background-color: #C0C0C0;
+        color: black;
+        
+    }
+
+
+.info-item {
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: #f1f1f1;
+    border-left: 3px solid #007bff;
+}
+
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+    .row.history-link {
+        justify-content: center;
+        /* Horizontally center the content */
+        align-items: center;
+        /* Vertically center the content */
+    }
+
+.history-link {
+    justify-content: center;
+    /* Horizontally center the content */
+    align-items: center;
+}
+
+
+.recommend-section {
+    display: flex;
+    flex-direction: column; /* Arrange buttons vertically */
+    align-items: center; /* Center-align buttons */
+    gap: 10px; /* Space between buttons */
+    margin-right: 20px; /* Creates a gap with the book image */
+}
+
+.btn-recommend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: default;
+    border-radius: 5px;
+    transition: transform 0.2s, background-color 0.3s;
+    color: white;
+    background-color: #6c757d; /* Default gray color */
+    gap: 5px; /* Adds space between icon and count */
+}
+
+    .btn-recommend i {
+        font-size: 1.2em;
+    }
+
+.btnRecommendUp {
+    background-color: #28a745; /* Green for upvotes */
+}
+
+.btnRecommendDown {
+    background-color: #dc3545; /* Red for downvotes */
+}
+.btnRecommendUp:hover {
+    background-color: #28a745; /* Green for upvotes */
+}
+
+.btnRecommendDown:hover {
+    background-color: #dc3545; /* Red for downvotes */
+}
+
+
+.recommend-count {
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 5px; /* Adjust spacing between icon and count */
+}
+
+.btn-recommend:disabled {
+    background-color: #b2b2b2; /* Gray for disabled state */
+    cursor: not-allowed;
+}

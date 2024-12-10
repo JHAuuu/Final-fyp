@@ -1,0 +1,100 @@
+﻿.container {
+    width: 90%;
+    max-width: 800px;
+    margin-top: 10%;
+    border-radius: 1px;
+    margin-bottom: 5%;
+}
+
+.history-container {
+    border-style: solid;
+    border-color: #666;
+    border-width: 2px;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.time {
+    padding-left: 30px;
+}
+
+.history-item .time {
+    width: 150px;
+    font-size: 14px;
+    color: #666;
+}
+
+.details {
+    flex-grow: 1;
+    padding-left: 15px;
+}
+
+    .details .book-title {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .details .description {
+        font-size: 14px;
+        color: #999;
+    }
+
+.history-item:hover {
+    background-color: #f7f7f7;
+}
+
+.actions {
+    margin-left: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+    .actions i {
+        color: #999;
+        font-size: 18px;
+        transition: color 0.3s;
+    }
+
+        .actions i:hover {
+            color: #ff4d4d;
+        }
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.clear-btn {
+    /* Green */
+    color: #ffffff;
+    /* White text */
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    height: 50px;
+}
+
+.row.history-link {
+    justify-content: center;
+    /* Horizontally center the content */
+    align-items: center;
+    /* Vertically center the content */
+}
+
+.history-link {
+    justify-content: center;
+    /* Horizontally center the content */
+    align-items: center;
+}
+
+.wrapper.style1 {
+    padding: 1px !important;
+}

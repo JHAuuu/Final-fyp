@@ -1,0 +1,51 @@
+﻿.info-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    /* add some gap between grid cells */
+}
+/* Recommend Section Styling */
+.recommend-section {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-recommend {
+    border: none;
+    padding: 10px 15px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    color: white;
+    background-color: #6c757d; /* Default gray color */
+}
+
+    .btn-recommend i {
+        pointer-events: none; /* Ensures clicking the icon triggers the button */
+    }
+
+    /* Hover effects */
+    .btn-recommend:hover {
+        transform: scale(1.1);
+    }
+
+#btnRecommendUp:hover {
+    background-color: #28a745; /* Green for Upvote */
+}
+
+#btnRecommendDown:hover {
+    background-color: #dc3545; /* Red for Downvote */
+}
+
+/* Active state */
+#btnRecommendUp.active {
+    background-color: #28a745; /* Green for active Upvote */
+    transform: scale(1.2);
+}
+
+#btnRecommendDown.active {
+    background-color: #dc3545; /* Red for active Downvote */
+    transform: scale(1.2);
+}

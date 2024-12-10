@@ -1,0 +1,281 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css');
+
+:root {
+    --main-color: #DD2F6E;
+    --color-dark: #1D2231;
+    --text-grey: #8390A2;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+    /*the hypertext will not have the underline*/
+    font-family: 'Poppins', sans-serif;
+}
+
+.sidebar {
+    width: 280px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    /*so the sidebar can occupied the whole left side*/
+    background: var(--text-grey);
+    z-index: 100;
+    transition: width 300ms;
+}
+
+.sidebar-brand {
+    height: 90px;
+    padding: 1rem 0rem 1rem 1rem;
+    color: #fff;
+    /*to show the search icon*/
+}
+
+    .sidebar-brand span {
+        display: inline-block;
+        padding-right: 1rem;
+    }
+
+.sidebar-menu {
+    margin-top: 0rem;
+}
+
+    .sidebar-menu li {
+        width: 100%;
+        margin-bottom: 1.7rem;
+        padding-left: 1rem;
+    }
+
+    .sidebar-menu a {
+        padding-left: 1rem;
+        display: block;
+        color: #fff;
+        font-size: 1.1rem;
+    }
+
+        .sidebar-menu a.active {
+            background: #fff;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            color: var(--main-color);
+            border-radius: 30px 0px 0px 30px;
+        }
+
+        .sidebar-menu a span:first-child {
+            font-size: 1.5rem;
+            padding-right: 1rem;
+        }
+
+#nav-toggle:checked + .sidebar {
+    /*to make the sidebar can after clicked it reset the size*/
+    width: 70px;
+}
+
+    #nav-toggle:checked + .sidebar .sidebar-brand,
+    #nav-toggle:checked + .sidebar li {
+        padding-left: 1rem;
+        text-align: center;
+    }
+
+        #nav-toggle:checked + .sidebar li a {
+            padding-left: 0rem;
+        }
+
+#nav-toggle:checked ~ .sidebar .sidebar-menu .line {
+    width: 40px; /* Shrinks to 40px */
+}
+
+#nav-toggle:checked + .sidebar .sidebar-brand h2 span:last-child,
+#nav-toggle:checked + .sidebar li a span:last-child {
+    display: none;
+    /*so the sidebar will become none*/
+}
+
+#nav-toggle:checked ~ .main-content {
+    /*to make the webpage will move to left when click the icon*/
+    margin-left: 70px;
+}
+
+    #nav-toggle:checked ~ .main-content header {
+        width: calc(100% - 70px);
+        left: 70px;
+    }
+
+.main-content {
+    transition: margin-left 300ms;
+    margin-left: 280px;
+}
+
+header {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    /*make the dashboard got the shadow become more real*/
+    position: fixed;
+    left: 280px;
+    width: calc(100% - 280px);
+    top: 0;
+    z-index: 100;
+    transition: left 300ms;
+}
+
+hr {
+    width: 80%;
+}
+
+#nav-toggle {
+    /*for the input*/
+    display: none;
+}
+
+header h2 {
+    color: #222;
+}
+
+header label span {
+    font-size: 1.7rem;
+    padding-right: 1rem;
+}
+
+.user-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+    .user-wrapper img {
+        border-radius: 50%;
+        margin-right: 1rem;
+    }
+
+main {
+    margin-top: 60px;
+    padding: 2rem 1.5rem;
+    background: #f1f5f9;
+    min-height: calc(100vh - 60px);
+}
+
+.button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+    .button:hover {
+        background-color: #45a049;
+    }
+
+
+.sidebar-menu .logout-item .logout-button {
+    width: 35%;
+    text-align: left;
+    padding-left: 1rem;
+    font-size: 1.1rem;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+    .sidebar-menu .logout-item .logout-button:hover {
+        background-color: #91c8e7;
+        /* Change color on hover */
+    }
+
+.line {
+    width: 250px;
+    height: 2px;
+    background-color: #d1e9f9;
+    margin: 0 auto 10px auto;
+    transition: width 0.3s ease; /* Smooth transition for width change */
+}
+
+#nav-toggle:checked ~ .line {
+    width: 20px; /* Updated width */
+}
+
+/* General button styling */
+.toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: #4caf50; /* Green color for light mode */
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+    .toggle-btn:hover {
+        background-color: #388e3c; /* Darker green for hover */
+        transform: translateY(-3px); /* Slight lift effect */
+    }
+
+    .toggle-btn:active {
+        transform: scale(0.95); /* Slightly smaller on click */
+    }
+
+
+/* Notification container in dark mode */
+body.dark-mode .notification-container .notification {
+    background-color: #333333;
+    color: #e0e0e0;
+    border: 1px solid #444444;
+}
+
+/* Sidebar specific styles in dark mode */
+body.dark-mode .sidebar {
+    background-color: #1d1d1d;
+    color: #e0e0e0;
+}
+
+    body.dark-mode .sidebar a {
+        color: #e0e0e0;
+    }
+
+        body.dark-mode .sidebar a.active {
+            background-color: #333333;
+            color: var(--main-color);
+            border-radius: 30px 0 0 30px;
+        }
+
+/* Header in dark mode */
+body.dark-mode header {
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Dark mode for toggle button */
+body.dark-mode .toggle-btn {
+    background-color: #333333;
+    color: #e0e0e0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+    body.dark-mode .toggle-btn:hover {
+        background-color: #444444;
+    }
+
+body.dark-mode header h2 {
+    color: #ffffff; /* White text for the header title */
+}

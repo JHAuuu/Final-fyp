@@ -1,0 +1,89 @@
+﻿
+.table-container {
+    width: 80%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    text-align: left;
+    padding: 16px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f0f0f0;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+td {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+tr:hover {
+    background-color: #f9f9f9;
+}
+
+.book-title {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.book-details {
+    color: #666;
+    font-size: 14px;
+}
+
+.add-group {
+    /* Green */
+    color: #ffffff;
+    /* White text */
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    height: 50px;
+}
+
+.btn-close {
+    background-color: grey;
+}
+
+    .btn-close:hover {
+        background-color: grey;
+    }
+
+input[type="text"] {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+}
+
+.action-icon {
+    cursor: pointer;
+    color: grey; /* Default color */
+    font-size: 18px;
+}
+
+    .action-icon:hover {
+        color: red; /* Change to red on hover */
+    }
+
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-input {
+    font-size: 1.1rem;
+    padding: 10px;
+}

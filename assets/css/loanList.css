@@ -1,0 +1,116 @@
+﻿
+
+.history-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.time {
+    padding-left: 10px;
+    width: 80px !important;
+}
+
+.history-item .time {
+    width: 200px;
+    font-size: 14px;
+    color: #666;
+}
+
+.details {
+    flex-grow: 1;
+    padding-left: 15px;
+}
+
+    .details .book-title {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .details .description {
+        font-size: 14px;
+        color: #999;
+    }
+
+.history-item:hover {
+    background-color: #f7f7f7;
+}
+
+.actions {
+    margin-left: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.center-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center */
+    align-items: center; /* Horizontally center */
+    height: 200px; /* Full viewport height */
+    text-align: center;
+}
+
+.speedometer {
+    position: relative;
+    width: 200px;
+    height: 100px;
+    background: conic-gradient(#ddd 0%, #4CAF50 50%, #f44336 100%);
+    border-radius: 100px 100px 0 0;
+    overflow: hidden;
+}
+
+/* Needle styling */
+.needle {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    height: 100px;
+    background-color: black;
+    transform-origin: bottom;
+    transform: rotate(calc(-90deg + (var(--score) / 120 * 180deg)));
+    transition: transform 0.3s ease;
+}
+
+.trust-level-message {
+    font-size: 1.2em;
+    color: #333;
+    font-weight: bold;
+}
+
+.no-data-message {
+    text-align: center;
+    font-size: 16px;
+    color: #888;
+    margin-top: 20px;
+}
+
+.error-message {
+    color: #d9534f; /* Red color for errors */
+    background-color: #f2dede;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ebccd1;
+    margin: 10px 0;
+}
+
+
+.add-loan {
+    /* Green */
+    color: #ffffff;
+    /* White text */
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    height: 50px;
+}
+ .rows {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
