@@ -28,7 +28,7 @@
     border: 1px solid #4CAF50;
     border-radius: 0 5px 5px 0;
     cursor: pointer;
-    background-image: url('/Image/searchIcon.png'); /* Path to your image */
+    background-image: url('Image/searchIcon.png'); /* Path to your image */
     background-repeat: no-repeat;
     background-position: center; /* Adjust position as needed */
     padding-left: 35px; /* Adjust padding to make space for the image */

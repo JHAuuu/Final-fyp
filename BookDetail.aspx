@@ -14,7 +14,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
          <div>
             <!-- Image Back Button -->
-    <img src="images/back-button.png" alt="Back" onclick="console.log('Back button clicked'); history.back(); return false;" style="cursor: pointer; position: relative; z-index: 100;" class="back-button" />
+    <img src="images/back-button.png" alt="Back" onclick="goBackAndReload();" style="cursor: pointer; position: relative; z-index: 100;" class="back-button" />
         </div>
     <div class="row gtr-200">
         <div class="col-8 col-12-mobile" id="content">

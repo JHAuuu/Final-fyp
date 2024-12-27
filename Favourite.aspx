@@ -14,7 +14,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
      <div>
             <!-- Image Back Button -->
-            <img src="images/back-button.png" alt="Back" onclick="history.back(); return false;" class="back-button" />
+            <img src="images/back-button.png" alt="Back" onclick="goBackAndReload();" class="back-button" />
         </div>
     <div class="container" style="padding-bottom: 10%;">
         <header>
@@ -23,23 +23,24 @@
         <!--Body Content-->
         <div class="product-container">
             <asp:Repeater runat="server" ID="rptBooks">
-                <ItemTemplate>
-                    <a href="BookDetail.aspx?bookid=<%# Eval("BookId") %>" class="card" >
-                        <div class="title"><%# Eval("BookTitle") %></div>
-                        <div class="image">
-                            <img src="<%# Eval("BookImage") != DBNull.Value ? Eval("BookImage"): "images/defaultCoverBook.png"  %>" alt="HI" />
-                        </div>
-
-                        <div class="fav-btn fav-id<%#Eval("BookId") %> active" id="<%# Eval("FavId")  %>" onclick="removeFav('<%# Eval("BookId") %>','<%# Request.QueryString["groupId"] %>',this)">
-                            <i class="fa fa-heart"></i>
-                        </div>
-
-                    </a>
-                </ItemTemplate>
-            </asp:Repeater> 
-
+    <ItemTemplate>
+        <div class="card">
+            <a href="BookDetail.aspx?bookid=<%# Eval("BookId") %>">
+                <div class="title"><%# Eval("BookTitle") %></div>
+                <div class="image">
+                    <img src="<%# Eval("BookImage") != DBNull.Value ? Eval("BookImage"): "images/defaultCoverBook.png"  %>" alt="HI" />
+                </div>
+            </a>
+            <div class="fav-btn fav-id<%#Eval("BookId") %> active" id="<%# Eval("FavId")  %>" onclick="removeFav('<%# Eval("BookId") %>','<%# Request.QueryString["groupId"] %>',this)">
+                <i class="fa fa-heart"></i>
+            </div>
 
         </div>
+    </ItemTemplate>
+    </asp:Repeater>
+
+
+</div>
 
     </div>
 

@@ -70,7 +70,6 @@
             margin-top: 40px;
             width: 100px;
             height: 100px;
-            border-radius: 50%;
             margin-bottom: 10px;
         }
 
@@ -160,8 +159,8 @@
             <div class="profile-container">
                 <!-- Profile Sidebar -->
                 <div class="profile-card">
-                    <img src="images/user-image.jpg" alt="User Avatar" class="profile-avatar">
-                    <h2>John Doe</h2>
+                     <asp:Image ID="ImageQRCode" runat="server" class="profile-avatar" alt="User Avatar"/>
+
                     <p>Student</p>
                     <p runat="server" id="infoEdu">Education Level : <asp:Label runat="server" ID="lblEduLvl"></asp:Label></p>
                 </div>

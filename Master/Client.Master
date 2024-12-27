@@ -294,6 +294,7 @@
                   }, 15000);
               }
           }
+
       });
     // Function to display notifications
     function displayNotification(title, content, type, sendAt) {
@@ -417,7 +418,17 @@
         }
     }
 
-
+    function goBackAndReload() {
+        // Check if there is a referrer (previous page)
+        if (document.referrer) {
+            // Navigate to the previous page and reload it
+            
+            window.location.href = document.referrer;
+        } else {
+            // Fallback if no referrer is available
+            history.back();
+        }
+    }
   </script>
 
 </html>

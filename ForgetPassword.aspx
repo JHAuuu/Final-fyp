@@ -164,7 +164,7 @@
                     <div class="input-box">
                         <asp:TextBox ID="tBEmail" runat="server" TextMode="Email" Placeholder="Enter your email" CssClass="input-box" />
                     </div>
-                    <asp:Button ID="btnSEmail" runat="server" Text="Sign Up" Enabled="False" OnClick="btnSEmail_Click" />
+                    <asp:Button ID="btnSEmail" runat="server" Text="Submit" Enabled="False" OnClick="btnSEmail_Click" />
                 </form>
             </div>
         </div>

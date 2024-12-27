@@ -39,10 +39,10 @@
         <div class="comment-container">
             <textarea id="comment-box" placeholder="Leave your comment here..."><%= rateComment %></textarea>
             <button class="submit-btn" id="submit-btn">Submit</button>
-            <form runat="server">
-            <button class="cancel-btn" ID="cancelbtn"  
-                                      OnClick="window.location.href = document.referrer;" >Cancel</button>
-                </form>
+
+          <button class="cancel-btn" type="button" onclick="goBackAndReload();">Cancel</button>
+
+
         </div>
     </div>
     </body>
@@ -148,8 +148,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 });
+        function goBackAndReload() {
+            // Check if there is a referrer (previous page)
+            if (document.referrer) {
+                // Navigate to the previous page and reload it
 
-
+                window.location.href = document.referrer;
+            } else {
+                // Fallback if no referrer is available
+                history.back();
+            }
+        }
 
     </script>
     </html>

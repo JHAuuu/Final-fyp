@@ -99,7 +99,7 @@
     }
 
     /* Different colors for statuses */
-    .status-label.loaned {
+    .status-label.loaning {
         background-color: #007bff; /* Blue for loaned */
     }
 
@@ -130,24 +130,25 @@
     runat="server"
     ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
     SelectCommand="
-        SELECT 
-            U.UserId,
-            A.AuthorName,
-            L.LoanId,
-            L.StartDate,
-            L.EndDate,
-            L.Status,
-            BC.BookCopyId,
-            BC.BookCopyImage,
-            B.BookTitle
-        FROM Loan L
-        JOIN Patron P ON L.PatronId = P.PatronId
-        JOIN [User] U ON P.UserId = U.UserId
-        JOIN BookCopy BC ON L.BookCopyId = BC.BookCopyId
-        JOIN Book B ON BC.BookId = B.BookId
-        JOIN BookAuthor BA ON B.BookId = BA.BookId
-        JOIN Author A ON BA.AuthorId = A.AuthorId
-        WHERE U.UserId = @UserId">
+         SELECT 
+                U.UserId,
+                STRING_AGG(A.AuthorName, ', ') AS AuthorName,
+                L.LoanId,
+                L.StartDate,
+                L.EndDate,
+                L.Status,
+                BC.BookCopyId,
+                BC.BookCopyImage,
+                B.BookTitle
+            FROM Loan L
+            JOIN Patron P ON L.PatronId = P.PatronId
+            JOIN [User] U ON P.UserId = U.UserId
+            JOIN BookCopy BC ON L.BookCopyId = BC.BookCopyId
+            JOIN Book B ON BC.BookId = B.BookId
+            JOIN BookAuthor BA ON B.BookId = BA.BookId
+            JOIN Author A ON BA.AuthorId = A.AuthorId
+            WHERE U.UserId = @UserId
+            GROUP BY U.UserId, L.LoanId, L.StartDate, L.EndDate, L.Status, BC.BookCopyId, BC.BookCopyImage, B.BookTitle;">
     <SelectParameters>
         <asp:QueryStringParameter Name="UserId" QueryStringField="UserId" Type="Int32" />
     </SelectParameters>

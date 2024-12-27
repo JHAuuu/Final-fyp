@@ -6,6 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Web.Security;
+using ZXing;
+using System.IO;
+using System.Drawing;
 
 namespace fyp
 {
@@ -16,6 +19,12 @@ namespace fyp
             if (!IsPostBack)
             {
                 PredefinedData();
+                if (!string.IsNullOrEmpty(Session["UserId"].ToString()))
+                {
+                    String userid = Session["UserId"].ToString();
+                    GenerateQRCode(userid);
+                }
+                
             }
         }
 
@@ -130,6 +139,31 @@ WHERE u.UserName = @username;";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An error occurred while edit the profile. Please try again.');", true);
             }
 
+        }
+
+        private void GenerateQRCode(string userId)
+        {
+            BarcodeWriter writer = new BarcodeWriter
+            {
+                Format = BarcodeFormat.QR_CODE,
+                Options = new ZXing.Common.EncodingOptions
+                {
+                    Width = 200,
+                    Height = 200,
+                    Margin = 1
+                }
+            };
+
+            using (Bitmap bitmap = writer.Write(userId))
+            {
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    bitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                    byte[] byteImage = ms.ToArray();
+                    string base64Image = Convert.ToBase64String(byteImage);
+                    ImageQRCode.ImageUrl = "data:image/png;base64," + base64Image;
+                }
+            }
         }
     }
 }
